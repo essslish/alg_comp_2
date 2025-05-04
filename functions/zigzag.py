@@ -1,99 +1,113 @@
+"""
+Модуль для выполнения зигзаг-сканирования (zig-zag) и обратной сборки квадратных блоков N×N.
+
+Класс ZigZag позволяет:
+- получить одномерный массив коэффициентов длины N² в порядке зигзаг-обхода;
+- восстановить N×N-блок из одномерного массива коэффициентов.
+"""
+
+from typing import List, Tuple
+
 import numpy as np
 
+
 class ZigZag:
-    @staticmethod
-    def convert(matrix_bytes: bytes, width: int, height: int) -> bytes:
+    """
+    Класс для зигзаг-сканирования и обратного преобразования квадратных матриц размера N×N.
+
+    Атрибуты:
+        block_size (int): размер блока (N).
+        indices (List[Tuple[int,int]]): упорядоченный список индексов (i,j) для обхода.
+    """
+
+    def __init__(self, block_size: int):
         """
-        Прямое преобразование: зигзаг-обход матрицы
-        Returns:
-            байтовая строка с элементами в порядке зигзаг-обхода (int16).
+        Инициализирует таблицу индексов для зигзаг-обхода.
+
+        :param block_size: размер квадрата N. Должен быть положительным целым.
         """
-        matrix = np.frombuffer(matrix_bytes, dtype=np.int16).reshape(height, width).tolist()  # Преобразуем байтовую строку в NumPy массив типа int16 и преобразуем его в обычный список
-        
-        def walk(mat):
-            """
-            Внутренняя функция для выполнения зигзаг-обхода матрицы.
-            """
-            zigzag = [] 
-            n = len(mat) 
-            for index in range(1, 2*n):  # Перебираем диагонали матрицы.
-                if index <= n:  # Если номер диагонали меньше или равен размеру матрицы:
-                    slice = [row[:index] for row in mat[:index]]  # Выделяем часть матрицы до текущей диагонали.
-                else:  # Если номер диагонали больше размера матрицы:
-                    slice = [row[index-n:] for row in mat[index-n:]]  # Выделяем часть матрицы после текущей диагонали.
-                
-                diag = [slice[i][len(slice)-i-1] for i in range(len(slice))]  # Извлекаем элементы текущей диагонали.
-                if len(diag) % 2:  
-                    diag.reverse() 
-                zigzag += diag  
-            return zigzag 
-        
-        zigzag = walk(matrix) 
-        return np.array(zigzag, dtype=np.int16).tobytes() 
+        if block_size <= 0:
+            raise ValueError("block_size должен быть положительным целым числом")
+        self.block_size = block_size
+        self.indices = self._generate_indices(block_size)
 
     @staticmethod
-    def inverse(zigzag_bytes: bytes, width: int, height: int) -> bytes:
+    def _generate_indices(n: int) -> List[Tuple[int, int]]:
         """
-        :return: байтовая строка с восстановленной матрицей
+        Генерирует список индексов для зигзаг-обхода матрицы n×n.
+
+        :param n: размер матрицы.
+        :return: список (i, j) длины n*n в порядке обхода.
         """
-        zigzag = np.frombuffer(zigzag_bytes, dtype=np.int16).tolist()
-        n = height
-        matrix = [[0]*width for _ in range(height)]
-        index = 0
-        
-        # заполняем матрицу как раньше
-        for d in range(1, 2*n):
-            if d <= n:
-                slice_size = d
-                for i in range(slice_size):
-                    if d % 2:
-                        row = i
-                        col = slice_size - 1 - i
-                    else:
-                        row = slice_size - 1 - i
-                        col = i
-                    if row < height and col < width and index < len(zigzag):
-                        matrix[row][col] = zigzag[index]
-                        index += 1
+        indices: List[Tuple[int, int]] = []
+        for s in range(2 * n - 1):
+            if s % 2 == 0:
+                # чётная диагональ: идём снизу вверх
+                i_start = min(s, n - 1)
+                j_start = s - i_start
+                while i_start >= 0 and j_start < n:
+                    indices.append((i_start, j_start))
+                    i_start -= 1
+                    j_start += 1
             else:
-                slice_size = 2*n - d
-                for i in range(slice_size):
-                    if d % 2:
-                        row = n - slice_size + i
-                        col = n - 1 - i
-                    else:
-                        row = n - 1 - i
-                        col = n - slice_size + i
-                    if row < height and col < width and index < len(zigzag):
-                        matrix[row][col] = zigzag[index]
-                        index += 1
-        
-        # отражаем элементы относительно главной диагонали
-        for i in range(n):
-            for j in range(i+1, n):
-                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-        
-        return np.array(matrix, dtype=np.int16).tobytes()
-    
-# Создаем тестовую матрицу 4x4
-test_matrix = np.array([
-    [1, 2, 6, 7],
-    [3, 5, 8, 13],
-    [4, 9, 12, 14],
-    [10, 11, 15, 16]
-], dtype=np.int16)
+                # нечётная диагональ: идём сверху вниз
+                j_start = min(s, n - 1)
+                i_start = s - j_start
+                while j_start >= 0 and i_start < n:
+                    indices.append((i_start, j_start))
+                    i_start += 1
+                    j_start -= 1
+        return indices
 
-# Преобразуем в байтовую строку
-matrix_bytes = test_matrix.tobytes()
+    def encode(self, block: np.ndarray) -> np.ndarray:
+        """
+        Преобразует N×N-блок в одномерный массив длины N² по зигзаг-обходу.
 
-# Прямое преобразование
-zigzag_bytes = ZigZag.convert(matrix_bytes, 4, 4)
-print("Зигзаг-последовательность:", np.frombuffer(zigzag_bytes, dtype=np.int16))
-print(zigzag_bytes)
+        :param block: входная матрица размера (N, N).
+        :return: одномерный numpy-массив длины N*N, dtype совпадает с block.dtype.
+        """
+        arr = np.asarray(block)
+        if arr.ndim != 2 or arr.shape != (self.block_size, self.block_size):
+            raise ValueError(f"Входной блок должен иметь форму ({self.block_size}, {self.block_size})")
+        # Считываем элементы в порядке индексов
+        flat = [arr[i, j] for (i, j) in self.indices]
+        return np.array(flat, dtype=arr.dtype)
 
-# Обратное преобразование
-restored_bytes = ZigZag.inverse(zigzag_bytes, 4, 4)
-restored_matrix = np.frombuffer(restored_bytes, dtype=np.int16).reshape(4, 4)
-print("Восстановленная матрица:")
-print(restored_bytes)
-print(restored_matrix)
+    def decode(self, data: np.ndarray) -> np.ndarray:
+        """
+        Восстанавливает N×N-блок из одномерного массива длины N², заданного в зигзаг-порядке.
+
+        :param data: одномерный numpy-массив длины N*N.
+        :return: восстановленная матрица размера (N, N), dtype совпадает с data.dtype.
+        """
+        arr = np.asarray(data)
+        expected_len = self.block_size * self.block_size
+        if arr.ndim != 1 or arr.size != expected_len:
+            raise ValueError(f"Входной массив должен быть одномерным длины {expected_len}")
+        # Заполняем блок нулями нужного dtype
+        block = np.zeros((self.block_size, self.block_size), dtype=arr.dtype)
+        for idx, (i, j) in enumerate(self.indices):
+            block[i, j] = arr[idx]
+        return block
+
+
+if __name__ == "__main__":
+    # Пример использования и тестирование
+    N = 4
+    zz = ZigZag(block_size=N)
+
+    # Тестовый блок 4×4
+    test_block = np.array([
+        [1, 2, 6, 7],
+        [3, 5, 8, 13],
+        [4, 9, 12, 14],
+        [10, 11, 15, 16]
+    ], dtype=np.int16)
+
+    # Прямое зигзаг-сканирование
+    flat = zz.encode(test_block)
+    print("ZigZag последовательность:", flat.tolist())
+
+    # Обратное преобразование
+    restored = zz.decode(flat)
+    print("Восстановленный блок:\n", restored)

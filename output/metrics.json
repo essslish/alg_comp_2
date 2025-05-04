@@ -1,0 +1,386 @@
+[
+  {
+    "original_size": 12582912,
+    "compressed_size": 77720,
+    "decompressed_size": 12582912,
+    "compression_ratio": 161.900566,
+    "name": "biker_orig",
+    "quality": 0
+  },
+  {
+    "original_size": 4194304,
+    "compressed_size": 76039,
+    "decompressed_size": 12582912,
+    "compression_ratio": 55.159905,
+    "name": "biker_gray",
+    "quality": 0
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 118868,
+    "decompressed_size": 12582912,
+    "compression_ratio": 105.856177,
+    "name": "biker_bw",
+    "quality": 0
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 951797,
+    "decompressed_size": 12582912,
+    "compression_ratio": 13.220164,
+    "name": "biker_dithered",
+    "quality": 0
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 7391,
+    "decompressed_size": 786432,
+    "compression_ratio": 106.404005,
+    "name": "Lenna_orig",
+    "quality": 0
+  },
+  {
+    "original_size": 262144,
+    "compressed_size": 7153,
+    "decompressed_size": 786432,
+    "compression_ratio": 36.64812,
+    "name": "Lenna_gray",
+    "quality": 0
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 23944,
+    "decompressed_size": 786432,
+    "compression_ratio": 32.844637,
+    "name": "Lenna_bw",
+    "quality": 0
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 92320,
+    "decompressed_size": 786432,
+    "compression_ratio": 8.518544,
+    "name": "Lenna_dithered",
+    "quality": 0
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 220025,
+    "decompressed_size": 12582912,
+    "compression_ratio": 57.188556,
+    "name": "biker_orig",
+    "quality": 20
+  },
+  {
+    "original_size": 4194304,
+    "compressed_size": 200126,
+    "decompressed_size": 12582912,
+    "compression_ratio": 20.958316,
+    "name": "biker_gray",
+    "quality": 20
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 229873,
+    "decompressed_size": 12582912,
+    "compression_ratio": 54.738538,
+    "name": "biker_bw",
+    "quality": 20
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 2335622,
+    "decompressed_size": 12582912,
+    "compression_ratio": 5.387392,
+    "name": "biker_dithered",
+    "quality": 20
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 28953,
+    "decompressed_size": 786432,
+    "compression_ratio": 27.162367,
+    "name": "Lenna_orig",
+    "quality": 20
+  },
+  {
+    "original_size": 262144,
+    "compressed_size": 27314,
+    "decompressed_size": 786432,
+    "compression_ratio": 9.597423,
+    "name": "Lenna_gray",
+    "quality": 20
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 53125,
+    "decompressed_size": 786432,
+    "compression_ratio": 14.803426,
+    "name": "Lenna_bw",
+    "quality": 20
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 179281,
+    "decompressed_size": 786432,
+    "compression_ratio": 4.386589,
+    "name": "Lenna_dithered",
+    "quality": 20
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 337829,
+    "decompressed_size": 12582912,
+    "compression_ratio": 37.246394,
+    "name": "biker_orig",
+    "quality": 40
+  },
+  {
+    "original_size": 4194304,
+    "compressed_size": 296494,
+    "decompressed_size": 12582912,
+    "compression_ratio": 14.146337,
+    "name": "biker_gray",
+    "quality": 40
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 303288,
+    "decompressed_size": 12582912,
+    "compression_ratio": 41.488328,
+    "name": "biker_bw",
+    "quality": 40
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 3231482,
+    "decompressed_size": 12582912,
+    "compression_ratio": 3.893852,
+    "name": "biker_dithered",
+    "quality": 40
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 44551,
+    "decompressed_size": 786432,
+    "compression_ratio": 17.652398,
+    "name": "Lenna_orig",
+    "quality": 40
+  },
+  {
+    "original_size": 262144,
+    "compressed_size": 40890,
+    "decompressed_size": 786432,
+    "compression_ratio": 6.410956,
+    "name": "Lenna_gray",
+    "quality": 40
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 74021,
+    "decompressed_size": 786432,
+    "compression_ratio": 10.624444,
+    "name": "Lenna_bw",
+    "quality": 40
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 229926,
+    "decompressed_size": 786432,
+    "compression_ratio": 3.42037,
+    "name": "Lenna_dithered",
+    "quality": 40
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 443641,
+    "decompressed_size": 12582912,
+    "compression_ratio": 28.362825,
+    "name": "biker_orig",
+    "quality": 60
+  },
+  {
+    "original_size": 4194304,
+    "compressed_size": 388159,
+    "decompressed_size": 12582912,
+    "compression_ratio": 10.805634,
+    "name": "biker_gray",
+    "quality": 60
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 358625,
+    "decompressed_size": 12582912,
+    "compression_ratio": 35.086544,
+    "name": "biker_bw",
+    "quality": 60
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 3703204,
+    "decompressed_size": 12582912,
+    "compression_ratio": 3.397845,
+    "name": "biker_dithered",
+    "quality": 60
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 59138,
+    "decompressed_size": 786432,
+    "compression_ratio": 13.298252,
+    "name": "Lenna_orig",
+    "quality": 60
+  },
+  {
+    "original_size": 262144,
+    "compressed_size": 53524,
+    "decompressed_size": 786432,
+    "compression_ratio": 4.897691,
+    "name": "Lenna_gray",
+    "quality": 60
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 87486,
+    "decompressed_size": 786432,
+    "compression_ratio": 8.989233,
+    "name": "Lenna_bw",
+    "quality": 60
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 255841,
+    "decompressed_size": 786432,
+    "compression_ratio": 3.073909,
+    "name": "Lenna_dithered",
+    "quality": 60
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 707922,
+    "decompressed_size": 12582912,
+    "compression_ratio": 17.774433,
+    "name": "biker_orig",
+    "quality": 80
+  },
+  {
+    "original_size": 4194304,
+    "compressed_size": 611339,
+    "decompressed_size": 12582912,
+    "compression_ratio": 6.860848,
+    "name": "biker_gray",
+    "quality": 80
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 421693,
+    "decompressed_size": 12582912,
+    "compression_ratio": 29.839035,
+    "name": "biker_bw",
+    "quality": 80
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 4267787,
+    "decompressed_size": 12582912,
+    "compression_ratio": 2.948346,
+    "name": "biker_dithered",
+    "quality": 80
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 90013,
+    "decompressed_size": 786432,
+    "compression_ratio": 8.736871,
+    "name": "Lenna_orig",
+    "quality": 80
+  },
+  {
+    "original_size": 262144,
+    "compressed_size": 79939,
+    "decompressed_size": 786432,
+    "compression_ratio": 3.2793,
+    "name": "Lenna_gray",
+    "quality": 80
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 103505,
+    "decompressed_size": 786432,
+    "compression_ratio": 7.59801,
+    "name": "Lenna_bw",
+    "quality": 80
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 287904,
+    "decompressed_size": 786432,
+    "compression_ratio": 2.731577,
+    "name": "Lenna_dithered",
+    "quality": 80
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 3220335,
+    "decompressed_size": 12582912,
+    "compression_ratio": 3.90733,
+    "name": "biker_orig",
+    "quality": 100
+  },
+  {
+    "original_size": 4194304,
+    "compressed_size": 2058171,
+    "decompressed_size": 12582912,
+    "compression_ratio": 2.037879,
+    "name": "biker_gray",
+    "quality": 100
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 546148,
+    "decompressed_size": 12582912,
+    "compression_ratio": 23.039381,
+    "name": "biker_bw",
+    "quality": 100
+  },
+  {
+    "original_size": 12582912,
+    "compressed_size": 5671230,
+    "decompressed_size": 12582912,
+    "compression_ratio": 2.218727,
+    "name": "biker_dithered",
+    "quality": 100
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 401150,
+    "decompressed_size": 786432,
+    "compression_ratio": 1.960444,
+    "name": "Lenna_orig",
+    "quality": 100
+  },
+  {
+    "original_size": 262144,
+    "compressed_size": 284009,
+    "decompressed_size": 786432,
+    "compression_ratio": 0.923013,
+    "name": "Lenna_gray",
+    "quality": 100
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 136752,
+    "decompressed_size": 786432,
+    "compression_ratio": 5.75079,
+    "name": "Lenna_bw",
+    "quality": 100
+  },
+  {
+    "original_size": 786432,
+    "compressed_size": 376751,
+    "decompressed_size": 786432,
+    "compression_ratio": 2.087405,
+    "name": "Lenna_dithered",
+    "quality": 100
+  }
+]
