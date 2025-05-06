@@ -1,12 +1,3 @@
-"""
-Модуль даунсемплинга и апсемплинга двумерных матриц (цветовых каналов).
-
-Класс Downsampler поддерживает:
-- понижение разрешения (downsampling) с усреднением блоков KxL;
-- восстановление разрешения (upsampling) методом ближайшего соседа;
-- обработку нечетных размеров с помощью паддинга.
-"""
-
 from typing import Tuple
 
 import numpy as np
@@ -14,24 +5,9 @@ from PIL import Image
 
 
 class Downsampler:
-    """
-    Класс для даунсемплинга и апсемплинга 2D-матриц.
-
-    Понижение разрешения выполняется усреднением неперекрывающихся блоков размера
-    (factor_y × factor_x) с возможным паддингом по краям для обеспечения кратности.
-    Апсемплинг — простое растягивание (nearest-neighbor) каждой выборки в блок
-    исходного размера.
-
-    Attributes:
-        factor_y (int): коэффициент понижения по вертикали.
-        factor_x (int): коэффициент понижения по горизонтали.
-        fill_value (float): значение для заполнения паддинга.
-    """
-
+   
     def __init__(self, factor_y: int = 2, factor_x: int = 2, fill_value: float = 0.0):
         """
-        Инициализация даунсемплера.
-
         :param factor_y: сколько строк сгруппировать в одну (шаг по вертикали).
         :param factor_x: сколько столбцов сгруппировать в одну (шаг по горизонтали).
         :param fill_value: значение для заполнения краевых пикселов при паддинге.
@@ -47,8 +23,6 @@ class Downsampler:
             channel: np.ndarray
     ) -> Tuple[np.ndarray, Tuple[int, int]]:
         """
-        Понижает разрешение матрицы усреднением блоков.
-
         :param channel: 2D numpy-массив (любой числовой dtype).
         :return: кортеж (downsampled, original_shape), где
                  downsampled — результат даунсемплинга,
@@ -92,13 +66,7 @@ class Downsampler:
             downsampled: np.ndarray,
             original_shape: Tuple[int, int]
     ) -> np.ndarray:
-        """
-        Восстанавливает разрешение до original_shape методом nearest-neighbor.
-
-        :param downsampled: результат работы метода downsample.
-        :param original_shape: исходная (height, width), возвращённая downsample.
-        :return: 2D numpy-массив того же dtype, что и downsampled, размера original_shape.
-        """
+       
         if downsampled.ndim != 2:
             raise ValueError("Ожидается 2D-массив")
 

@@ -1,13 +1,3 @@
-"""
-Модуль преобразования цветового пространства между RGB и YCbCr.
-
-В данном модуле реализован класс `RGBToYCbCr` с методами:
-- преобразования из RGB в YCbCr;
-- обратного преобразования из YCbCr в RGB.
-
-Используется стандартная формула ITU-R BT.601.
-"""
-
 from typing import ByteString
 
 
@@ -28,13 +18,7 @@ class RGBToYCbCr:
 
     @staticmethod
     def convert(rgb_data: ByteString) -> bytes:
-        """
-        Преобразует последовательность байт RGB в YCbCr.
-
-        :param rgb_data: Входные байты в формате [R, G, B, R, G, B, ...].
-                         Длина должна быть кратна 3.
-        :return: Байты в формате [Y, Cb, Cr, Y, Cb, Cr, ...].
-        """
+    
         if len(rgb_data) % 3 != 0:
             raise ValueError("Длина rgb_data должна быть кратна 3")
 
@@ -58,13 +42,7 @@ class RGBToYCbCr:
 
     @staticmethod
     def inverse(ycbcr_data: ByteString) -> bytes:
-        """
-        Восстанавливает последовательность байт YCbCr в RGB.
-
-        :param ycbcr_data: Входные байты в формате [Y, Cb, Cr, Y, Cb, Cr, ...].
-                            Длина должна быть кратна 3.
-        :return: Байты в формате [R, G, B, R, G, B, ...].
-        """
+       
         if len(ycbcr_data) % 3 != 0:
             raise ValueError("Длина ycbcr_data должна быть кратна 3")
 

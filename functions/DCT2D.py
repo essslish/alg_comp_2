@@ -1,13 +1,3 @@
-"""
-Модуль для выполнения прямого и обратного 2D-DCT (DCT-II) на блоках размера N×N.
-
-Класс DCT2D позволяет:
-- вычислять прямое DCT-II 2D;
-- вычислять обратное IDCT-II 2D;
-- проверять точность восстановления (максимальная ошибка);
-- оценивать энергоёмкость (доля энергии в DC-компоненте).
-"""
-
 import numpy as np
 
 
@@ -22,11 +12,6 @@ class DCT2D:
     """
 
     def __init__(self, block_size: int):
-        """
-        Инициализация матрицы DCT-II.
-
-        :param block_size: размер блока N (должно быть положительным).
-        """
         if block_size <= 0:
             raise ValueError("block_size должен быть положительным целым числом")
         self.block_size = block_size
@@ -42,7 +27,6 @@ class DCT2D:
         """
         # Вектор нормировок α[k]
         alpha = np.array([np.sqrt(1 / N) if k == 0 else np.sqrt(2 / N) for k in range(N)])
-        # Индексы
         n = np.arange(N)
         k = n.reshape((N, 1))
         # Косинусный аргумент

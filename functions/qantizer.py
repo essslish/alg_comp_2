@@ -1,25 +1,10 @@
-"""
-Модуль для работы с матрицами квантования JPEG:
-- опорные (базовые) таблицы ITU-T81 для яркостного (luminance) и цветоразностного (chrominance) каналов;
-- масштабирование таблиц в зависимости от уровня качества;
-- квантование и обратное деквантование DCT-коэффициентов.
-"""
-
 from typing import Tuple
 
 import numpy as np
 
 
 class Quantizer:
-    """
-    Класс для генерации и работы с матрицами квантования JPEG.
-
-    Методы позволяют:
-    - получать масштабированные таблицы квантования для заданного quality ∈ [0…100];
-    - квантовать DCT-коэффициенты;
-    - обратно деквантовать.
-    """
-
+    
     # Базовые таблицы квантования ITU-T81, стр. 143
     _BASE_LUMINANCE = np.array([
         [16, 11, 10, 16, 24, 40, 51, 61],
@@ -99,13 +84,7 @@ class Quantizer:
             qcoeffs: np.ndarray,
             table: np.ndarray
     ) -> np.ndarray:
-        """
-        Обратное деквантование: восстанавливает DCT-коэффициенты из квантованных.
-
-        :param qcoeffs: квантованные коэффициенты (N×N), dtype int.
-        :param table:   таблица квантования того же размера (N×N), dtype int.
-        :return: матрица DCT-коэффициентов, dtype float64.
-        """
+     
         if qcoeffs.shape != table.shape:
             raise ValueError("Размер qcoeffs и table должен совпадать")
         return (qcoeffs.astype(np.float64) * table.astype(np.float64))

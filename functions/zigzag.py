@@ -1,11 +1,3 @@
-"""
-Модуль для выполнения зигзаг-сканирования (zig-zag) и обратной сборки квадратных блоков N×N.
-
-Класс ZigZag позволяет:
-- получить одномерный массив коэффициентов длины N² в порядке зигзаг-обхода;
-- восстановить N×N-блок из одномерного массива коэффициентов.
-"""
-
 from typing import List, Tuple
 
 import numpy as np
@@ -21,11 +13,7 @@ class ZigZag:
     """
 
     def __init__(self, block_size: int):
-        """
-        Инициализирует таблицу индексов для зигзаг-обхода.
-
-        :param block_size: размер квадрата N. Должен быть положительным целым.
-        """
+   
         if block_size <= 0:
             raise ValueError("block_size должен быть положительным целым числом")
         self.block_size = block_size
@@ -33,12 +21,7 @@ class ZigZag:
 
     @staticmethod
     def _generate_indices(n: int) -> List[Tuple[int, int]]:
-        """
-        Генерирует список индексов для зигзаг-обхода матрицы n×n.
-
-        :param n: размер матрицы.
-        :return: список (i, j) длины n*n в порядке обхода.
-        """
+       
         indices: List[Tuple[int, int]] = []
         for s in range(2 * n - 1):
             if s % 2 == 0:
@@ -60,12 +43,7 @@ class ZigZag:
         return indices
 
     def encode(self, block: np.ndarray) -> np.ndarray:
-        """
-        Преобразует N×N-блок в одномерный массив длины N² по зигзаг-обходу.
-
-        :param block: входная матрица размера (N, N).
-        :return: одномерный numpy-массив длины N*N, dtype совпадает с block.dtype.
-        """
+       
         arr = np.asarray(block)
         if arr.ndim != 2 or arr.shape != (self.block_size, self.block_size):
             raise ValueError(f"Входной блок должен иметь форму ({self.block_size}, {self.block_size})")
@@ -74,12 +52,7 @@ class ZigZag:
         return np.array(flat, dtype=arr.dtype)
 
     def decode(self, data: np.ndarray) -> np.ndarray:
-        """
-        Восстанавливает N×N-блок из одномерного массива длины N², заданного в зигзаг-порядке.
-
-        :param data: одномерный numpy-массив длины N*N.
-        :return: восстановленная матрица размера (N, N), dtype совпадает с data.dtype.
-        """
+       
         arr = np.asarray(data)
         expected_len = self.block_size * self.block_size
         if arr.ndim != 1 or arr.size != expected_len:
